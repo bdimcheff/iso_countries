@@ -16,7 +16,7 @@ module ActionView #:nodoc:
         country_options = ""
                 
         if priority_countries
-          priority_countries.map! { |code| [ISO::Countries.get_country(code), code] }
+          priority_countries.map! { |code| [ISO::Countries.get_country(code), code] } unless priority_countries.first.is_a?(Array)
           
           country_options += options_for_select(priority_countries, selected)
           country_options += "<option value=\"\" disabled=\"disabled\">-------------</option>\n"
